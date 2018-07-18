@@ -459,7 +459,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap gp `[v`]
 nnoremap gV `[v`]
 
-map <Leader>tw	mt:%s@\s\+$@@ge<CR>`t:delm t<CR>:noh<CR>:let @/ = ""<CR>			" Trim whitespace
+nnoremap <Leader>tw	mt:%s@\s\+$@@ge<CR>`t:delm t<CR>:noh<CR>:let @/ = ""<CR>			" Trim whitespace
 
 " Change working dir to current
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -472,7 +472,7 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 " Stop that q window popping up
-map q: :q
+nnoremap q: :q
 
 " Mappings for tag navigation
 " Use [] for back/forward. Use the g behaviour by default
