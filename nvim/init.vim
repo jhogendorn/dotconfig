@@ -357,6 +357,8 @@ call plug#begin('~/.config/nvim/plugged')
       autocmd FileType json set formatoptions=tcq2l
       autocmd FileType json set foldmethod=syntax
     augroup END
+
+	Plug 'https://github.com/m-kat/aws-vim'
 	" }}}
 
 call plug#end()
