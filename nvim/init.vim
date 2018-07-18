@@ -80,7 +80,7 @@ if has('persistent_undo')
 	endif
 endif
 
-let mapleader=" \<Space>"           " Space is the superior leader
+let mapleader="\<Space>"           " Space is the superior leader
 
 autocmd BufRead,BufNewFile * setlocal signcolumn=yes	" Ensure the symbol column is always present
 
