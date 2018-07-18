@@ -345,7 +345,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'tpope/vim-markdown', {}
     au BufNewFile,BufReadPost *.md set filetype=markdown
-    let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
+    let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
 
   Plug 'stephpy/vim-yaml', {}
   Plug 'chase/vim-ansible-yaml', {}
