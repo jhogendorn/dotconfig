@@ -479,6 +479,8 @@ vnoremap <c-]> g<c-]>
 nnoremap g<c-]> <c-]>
 vnoremap g<c-]> <c-]>
 
+" dts for inserting timestamp for journalling or comments
+iab <expr> dts strftime("%Y%m%d %H%M   \>")
 "}}}
 
 colorscheme molokai
