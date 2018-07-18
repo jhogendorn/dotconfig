@@ -225,6 +225,11 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-characterize', {}
 	" }}}
 
+	" Tools {{{
+	Plug 'vimwiki/vimwiki', {}
+		let g:vimwiki_list = [{'path': '~/Wiki/'}] ", 'auto_export': 1}]
+	" }}}
+
 	" History and VCS {{{
 	Plug 'tpope/vim-fugitive'
 		autocmd QuickFixCmdPost *log* cwindow
