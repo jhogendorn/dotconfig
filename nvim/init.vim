@@ -227,7 +227,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Tools {{{
 	Plug 'vimwiki/vimwiki', {}
-		let g:vimwiki_list = [{'path': '~/Wiki/'}] ", 'auto_export': 1}]
+		let g:vimwiki_list = [{ 'path': '~/Wiki/', 'syntax': 'markdown', 'ext': '.md' }]
 	" }}}
 
 	" History and VCS {{{
