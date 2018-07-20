@@ -483,6 +483,8 @@ vnoremap g<c-]> <c-]>
 
 " dts for inserting timestamp for journalling or comments
 iab <expr> dts strftime("%Y%m%d %H%M   \>")
+" ✓ mark replacement for checklists
+nnoremap <Leader>tick r<C-V>u2713<Esc>
 "}}}
 
 colorscheme molokai
