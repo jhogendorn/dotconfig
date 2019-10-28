@@ -129,24 +129,30 @@ call plug#begin('~/.config/nvim/plugged')
 			let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
 			" Use LanguageServer for omnifunc completion
 			autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-		" Don't bail the editor out if we dont have the langserver
-		"else
-		"	echo "javascript-typescript-stdio not installed!\n"
-		"	:cq
 		endif
 
-		" <leader>ld to go to definition
-		autocmd FileType javascript nnoremap <buffer>
-			\ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-		" <leader>lh for type info under cursor
-		autocmd FileType javascript nnoremap <buffer>
-			\ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-		" <leader>lr to rename variable under cursor
-		autocmd FileType javascript nnoremap <buffer>
-			\ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-		" <leader>lf to fuzzy find symbols in the current document
-		autocmd FileType javascript nnoremap <buffer>
-			\ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
+		autocmd BufReadPost *.rs setlocal filetype=rust
+		if executable('rustup')
+			let g:LanguageClient_serverCommands.rust =['rustup', 'run', 'nightly', 'rls'] 
+			autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+		endif
+
+		"" <leader>ld to go to definition
+		"autocmd FileType javascript nnoremap <buffer>
+		"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+		"" <leader>lh for type info under cursor
+		"autocmd FileType javascript nnoremap <buffer>
+		"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+		"" <leader>lr to rename variable under cursor
+		"autocmd FileType javascript nnoremap <buffer>
+		"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+		"" <leader>lf to fuzzy find symbols in the current document
+		"autocmd FileType javascript nnoremap <buffer>
+		"  \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
+		nnoremap <leader>lh :call LanguageClient_textDocument_hover()
+		nnoremap <leader>ld :call LanguageClient_textDocument_definition()
+		nnoremap <leader>lr :call LanguageClient_textDocument_rename()
+		nnoremap <leader>lf :call LanguageClient_textDocument_documentSymbol()
 
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
