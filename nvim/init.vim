@@ -365,6 +365,9 @@ call plug#begin('~/.config/nvim/plugged')
     augroup END
 
 	Plug 'https://github.com/m-kat/aws-vim'
+
+	Plug 'hashivim/vim-terraform'
+	Plug 'juliosueiras/vim-terraform-completion'
 	" }}}
 
 call plug#end()
