@@ -234,6 +234,8 @@ call plug#begin('~/.config/nvim/plugged')
 			autocmd FileType nerdtree nnoremap <buffer><nowait> s :call nerdtree#ui_glue#invokeKeyMap('s')<CR>
 		augroup END
 	Plug 'tpope/vim-characterize', {}
+	"Causes excessive screen redrawing
+	"Plug 'wellle/context.vim', {}
 	" }}}
 
 	" Tools {{{
