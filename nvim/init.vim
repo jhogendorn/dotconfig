@@ -248,10 +248,14 @@ call plug#begin('~/.config/nvim/plugged')
 		autocmd QuickFixCmdPost *log* cwindow
 		autocmd QuickFixCmdPost *grep* cwindow
 
-	Plug 'sjl/gundo.vim', { 'on': [ 'GundoToggle' ] }
-		map <F3> :GundoToggle<CR>
-		let g:gundo_right = 1
-		let g:gundo_preview_bottom = 1
+	"Plug 'sjl/gundo.vim', { 'on': [ 'GundoToggle' ] }
+	"  map <F3> :GundoToggle<CR>
+	"  let g:gundo_right = 1
+	"  let g:gundo_preview_bottom = 1
+	Plug 'mbbill/undotree'
+		if !exists('g:undotree_WindowLayout')
+			let g:undotree_WindowLayout = 4
+		endif
 	" }}}
 
 	" Refactoring {{{
