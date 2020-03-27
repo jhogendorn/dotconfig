@@ -381,6 +381,14 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'hashivim/vim-terraform'
 	Plug 'juliosueiras/vim-terraform-completion'
+
+	Plug 'Glench/Vim-Jinja2-Syntax'
+		augroup jinja2_ft
+			autocmd!
+			autocmd BufNewFile,BufRead,BufReadPost *.yml.j2    set ft=yaml.jinja syntax=yaml.jinja
+			autocmd BufNewFile,BufRead,BufReadPost *.yaml.j2   set ft=yaml.jinja syntax=yaml.jinja
+			autocmd BufNewFile,BufRead,BufReadPost *.json.j2   set ft=json.jinja syntax=yaml.jinja
+		augroup END
 	" }}}
 
 call plug#end()
