@@ -149,10 +149,10 @@ call plug#begin('~/.config/nvim/plugged')
 		"" <leader>lf to fuzzy find symbols in the current document
 		"autocmd FileType javascript nnoremap <buffer>
 		"  \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
-		nnoremap <leader>lh :call LanguageClient_textDocument_hover()
-		nnoremap <leader>ld :call LanguageClient_textDocument_definition()
-		nnoremap <leader>lr :call LanguageClient_textDocument_rename()
-		nnoremap <leader>lf :call LanguageClient_textDocument_documentSymbol()
+		nnoremap <leader>Lh :call LanguageClient_textDocument_hover()
+		nnoremap <leader>Ld :call LanguageClient_textDocument_definition()
+		nnoremap <leader>Lr :call LanguageClient_textDocument_rename()
+		nnoremap <leader>Lf :call LanguageClient_textDocument_documentSymbol()
 
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
