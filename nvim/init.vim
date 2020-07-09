@@ -105,7 +105,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'wellle/tmux-complete.vim'
 		let g:deoplete#enable_at_startup = 1
-		let g:deoplete#enable_smart_case = 1
 		set completeopt=longest,menuone,preview
 		set wildignore=*.o,*.obj,*~
 		set wildignore+=*vim/backups*
@@ -114,8 +113,7 @@ call plug#begin('~/.config/nvim/plugged')
 		set wildignore+=*.gem
 		set wildignore+=tmp/**
 
-		let g:deoplete#sources = {}
-		let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'omni']
+
 
 	Plug 'autozimu/LanguageClient-neovim', {
 				\ 'branch': 'next',
@@ -392,6 +390,16 @@ call plug#begin('~/.config/nvim/plugged')
 	" }}}
 
 call plug#end()
+
+" DEOPLETE OPTIONS
+" Cannot call this function before plug#end
+call deoplete#custom#option({
+\ 'smart_case': v:true,
+\ })
+call deoplete#custom#option('sources', {
+\ '_': ['buffer'],
+\ 'javascript.jsx': ['file', 'ultisnips', 'omni', 'buffer', 'tag'],
+\})
 
 "}}}
 
