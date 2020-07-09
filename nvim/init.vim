@@ -402,6 +402,7 @@ call plug#begin('~/.config/nvim/plugged')
 			autocmd BufNewFile,BufRead,BufReadPost *.yaml.j2   set ft=yaml.jinja syntax=yaml.jinja
 			autocmd BufNewFile,BufRead,BufReadPost *.json.j2   set ft=json.jinja syntax=yaml.jinja
 		augroup END
+	Plug 'wilriker/gcode.vim'
 	" }}}
 
 call plug#end()
