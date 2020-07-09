@@ -11,11 +11,17 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
 
 #antigen theme denysdovhan/spaceship-prompt
 antigen theme romkatv/powerlevel10k
 
 antigen apply
+
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -23,7 +29,7 @@ antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-PATH=/Users/jhogendorn/Library/Python/3.7/bin:$PATH
+PATH=/Users/jhogendorn/Library/Python/3.7/bin:/usr/local/sbin:$PATH
 
 
 alias g='git'
