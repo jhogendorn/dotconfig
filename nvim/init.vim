@@ -216,6 +216,21 @@ call plug#begin('~/.config/nvim/plugged')
 		"endfunction
 		"inoremap <silent> <s-tab> <C-R>=g:SmartShiftTab()<cr>
 		"snoremap <silent> <s-tab> <Esc>:call g:SmartShiftTab()<cr>
+	"
+	Plug 'pechorin/any-jump.vim'
+		let g:any_jump_disable_default_keybindings = 1
+		" Normal mode: Jump to definition under cursore
+		nnoremap <leader>g :AnyJump<CR>
+
+		" Visual mode: jump to selected text in visual mode
+		xnoremap <leader>g :AnyJumpVisual<CR>
+
+		" Normal mode: open previous opened file (after jump)
+		nnoremap <leader>gb :AnyJumpBack<CR>
+
+		" Normal mode: open last closed search window again
+		nnoremap <leader>gl :AnyJumpLastResults<CR>
+
 	" }}}
 
 	" Movement {{{
