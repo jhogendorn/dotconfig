@@ -201,8 +201,8 @@ call plug#begin('~/.config/nvim/plugged')
 		nnoremap <Leader>b :Buffers<cr>
 
 	Plug 'scrooloose/nerdtree', {}
-		nnoremap <F2> :NERDTreeFocus<CR>
-		nnoremap <S-F2> :NERDTreeClose<CR>
+		nnoremap <F2> :NERDTreeToggle<CR>
+		nnoremap <S-F2> :NERDTreeFocus<CR>
 		nnoremap <Leader>sit :NERDTreeFind<CR>
 
 		let NERDTreeShowHidden=1
