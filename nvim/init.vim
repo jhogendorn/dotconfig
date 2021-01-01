@@ -245,30 +245,30 @@ call plug#begin('~/.config/nvim/plugged')
 		let g:airline_symbols.readonly = ''
 		let g:airline_symbols.linenr = ''
 
-	Plug 'rafi/awesome-vim-colorschemes'
+		Plug 'rafi/awesome-vim-colorschemes'
 	" }}}
-	
+
 	" Language Specific {{{
 	Plug 'pangloss/vim-javascript'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'peitalin/vim-jsx-typescript'
 
-  Plug 'plasticboy/vim-markdown', {}
-  "Plug 'tpope/vim-markdown', {}
-    au BufNewFile,BufReadPost *.md set filetype=markdown
-    au BufNewFile,BufReadPost README set filetype=markdown
-    let g:vim_markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
+	Plug 'plasticboy/vim-markdown', {}
+	"Plug 'tpope/vim-markdown', {}
+		au BufNewFile,BufReadPost *.md set filetype=markdown
+		au BufNewFile,BufReadPost README set filetype=markdown
+		let g:vim_markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
 
-  Plug 'stephpy/vim-yaml', {}
-  Plug 'chase/vim-ansible-yaml', {}
-  Plug 'elzr/vim-json', {}
-    au! BufRead,BufNewFile *.json set filetype=json
-    augroup json_autocmd
-      autocmd!
-      autocmd FileType json set autoindent
-      autocmd FileType json set formatoptions=tcq2l
-      autocmd FileType json set foldmethod=syntax
-    augroup END
+	Plug 'stephpy/vim-yaml', {}
+	Plug 'chase/vim-ansible-yaml', {}
+	Plug 'elzr/vim-json', {}
+		au! BufRead,BufNewFile *.json set filetype=json
+		augroup json_autocmd
+			autocmd!
+			autocmd FileType json set autoindent
+			autocmd FileType json set formatoptions=tcq2l
+			autocmd FileType json set foldmethod=syntax
+		augroup END
 
 	Plug 'https://github.com/m-kat/aws-vim'
 
