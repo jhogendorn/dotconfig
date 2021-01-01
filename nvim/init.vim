@@ -297,6 +297,7 @@ call plug#end()
 " WINDOW NAVIGATION {{{
 " =================
 
+" Closes the current buffer
 	nnoremap <Leader>q <C-W>q
 
 	nnoremap <Leader>k <C-W>k
@@ -304,21 +305,20 @@ call plug#end()
 	nnoremap <Leader>h <C-W>h
 	nnoremap <Leader>l <C-W>l
 
-" Closes the current buffer
 " Manage Tabs
-	nnoremap <Leader>mtr :tabp<CR>
-	nnoremap <Leader>mtl :tabn<CR>
+	nnoremap <Leader>mtl :tabp<CR>
+	nnoremap <Leader>mth :tabn<CR>
 	nnoremap <Leader>it :tabnew<CR>
 " Change Sizes
 "	 Vertical Size
-	nnoremap <Leader>mwl <C-W>+
-	nnoremap <Leader>mwh <C-W>-
+	nnoremap <Leader>mwk <C-W>+
+	nnoremap <Leader>mwj <C-W>-
 "	Horizontal Size
-	nnoremap <Leader>mwk <C-W><
-	nnoremap <Leader>mwj <C-W>>
+	nnoremap <Leader>mwh <C-W><
+	nnoremap <Leader>mwl <C-W>>
 "	Zoom Toggle
-	nnoremap <Leader>mwm <C-W>=
-	nnoremap <Leader>mwn <C-W>_<C-W><Bar>
+	nnoremap <Leader>mwn <C-W>=
+	nnoremap <Leader>mwm <C-W>_<C-W><Bar>
 "}}}
 
 " WINDOW CREATION {{{
