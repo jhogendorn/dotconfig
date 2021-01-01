@@ -388,9 +388,11 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap gp `[v`]
 nnoremap gV `[v`]
 
-nnoremap <Leader>tw	mt:%s@\s\+$@@ge<CR>`t:delm t<CR>:noh<CR>:let @/ = ""<CR>			" Trim whitespace
+nnoremap <Leader>wt	mt:%s@\s\+$@@ge<CR>`t:delm t<CR>:noh<CR>:let @/ = ""<CR>			" Trim whitespace
 command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
+nnoremap <Leader>wts :Tab2Space<CR>
+nnoremap <Leader>wst :Space2Tab<CR>
 
 " Change working dir to current
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
