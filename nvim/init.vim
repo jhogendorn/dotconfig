@@ -169,6 +169,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mbbill/undotree'
 		if !exists('g:undotree_WindowLayout')
 			let g:undotree_WindowLayout = 4
+			nnoremap <F3> :UndotreeToggle<CR>
 		endif
 	" }}}
 
