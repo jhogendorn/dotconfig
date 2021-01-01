@@ -166,6 +166,9 @@ call plug#begin('~/.config/nvim/plugged')
 		autocmd QuickFixCmdPost *log* cwindow
 		autocmd QuickFixCmdPost *grep* cwindow
 
+	Plug 'airblade/vim-gitgutter'
+		set updatetime=100 " Vim update polling from 4s to 0.1s
+
 	Plug 'mbbill/undotree'
 		if !exists('g:undotree_WindowLayout')
 			let g:undotree_WindowLayout = 4
