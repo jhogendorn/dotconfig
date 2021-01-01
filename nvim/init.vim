@@ -416,7 +416,12 @@ vnoremap g<c-]> <c-]>
 " dts for inserting timestamp for journalling or comments
 iab <expr> dts strftime("%Y%m%d %H%M   \>")
 " ✓ mark replacement for checklists
-nnoremap <Leader>tick r<C-V>u2713<Esc>
+nnoremap <Leader>tdT r<C-V>u2713<Esc> 		" Tick alone
+nnoremap <Leader>tdb r<C-V>u2610<Esc> 		" Ballot box
+nnoremap <Leader>tdt r<C-V>u2611<Esc> 		" Ballot box ticked
+nnoremap <Leader>tdh r<C-V>u25E9<Esc> 		" Ballot half coloured
+nnoremap <Leader>tdd r<C-V>u25FC<Esc> 		" Ballot full coloured
+
 "}}}
 
 colorscheme molokai
