@@ -98,6 +98,7 @@ let g:ruby_path = system('rvm current')
 " =================
 call plug#begin('~/.config/nvim/plugged')
 
+	Plug '~/.config/nvim/notes'
 
 	" Completion {{{
 	
