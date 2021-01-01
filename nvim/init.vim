@@ -128,16 +128,16 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'pechorin/any-jump.vim'
 		let g:any_jump_disable_default_keybindings = 1
 		" Normal mode: Jump to definition under cursore
-		nnoremap <leader>g :AnyJump<CR>
+		nnoremap <leader>f :AnyJump<CR>
 
 		" Visual mode: jump to selected text in visual mode
-		xnoremap <leader>g :AnyJumpVisual<CR>
+		xnoremap <leader>f :AnyJumpVisual<CR>
 
 		" Normal mode: open previous opened file (after jump)
-		nnoremap <leader>gb :AnyJumpBack<CR>
+		nnoremap <leader>fb :AnyJumpBack<CR>
 
 		" Normal mode: open last closed search window again
-		nnoremap <leader>gl :AnyJumpLastResults<CR>
+		nnoremap <leader>fl :AnyJumpLastResults<CR>
 
 	" }}}
 
