@@ -149,15 +149,15 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Behaviour {{{
 	Plug 'tpope/vim-repeat', {}
-	Plug 'tpope/vim-surround', {}
+	"Plug 'tpope/vim-surround', {}
 	Plug 'machakann/vim-sandwich', {}
 		augroup NERDTree-disable-sandwich
 			autocmd FileType nerdtree nnoremap <buffer><nowait> s :call nerdtree#ui_glue#invokeKeyMap('s')<CR>
 		augroup END
 	Plug 'tpope/vim-characterize', {}
+
 	"Causes excessive screen redrawing
 	"Plug 'wellle/context.vim', {}
-	" }}}
 
 	" Tools {{{
 	Plug 'vimwiki/vimwiki', {}
