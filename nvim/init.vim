@@ -384,9 +384,8 @@ xnoremap >	>gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Reselect last-pasted text (not sure which binding i like better)
+" Reselect last-pasted text
 nnoremap gp `[v`]
-nnoremap gV `[v`]
 
 nnoremap <Leader>wt	mt:%s@\s\+$@@ge<CR>`t:delm t<CR>:noh<CR>:let @/ = ""<CR>			" Trim whitespace
 command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
