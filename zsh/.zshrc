@@ -33,7 +33,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 
-PATH=/Users/jhogendorn/Library/Python/3.7/bin:/usr/local/sbin:$PATH
+PATH=/Users/jhogendorn/Library/Python/3.7/bin:/usr/local/sbin:$PATH:./bin
 
 export AUTOENV_FILE_ENTER=.env
 export AUTOENV_FILE_LEAVE=.env_leave
