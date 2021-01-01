@@ -12,6 +12,7 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
+antigen bundle Tarrasch/zsh-autoenv
 
 #antigen theme denysdovhan/spaceship-prompt
 antigen theme romkatv/powerlevel10k
@@ -33,6 +34,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 PATH=/Users/jhogendorn/Library/Python/3.7/bin:/usr/local/sbin:$PATH
+
+export AUTOENV_FILE_ENTER=.env
+export AUTOENV_FILE_LEAVE=.env_leave
 
 
 alias g='git'
