@@ -56,7 +56,8 @@ set listchars+=precedes:⟨           " Char to show when no wrap but text exten
 set title                           " Sets the title of the window
 set visualbell                      " Show bells as flashes
 set shortmess=filnxtToOI            " Don't show welcome message
-set notimeout                       " Dont time out on mappings
+set timeout                         " Time out on mappings
+set timeoutlen=300                  " Time out on key sequences
 set ttimeout                        " Do time out on key codes
 set ttimeoutlen=50                  " Ms to allow for key sequences to complete
 set mouse=a                         " Enable mouse in all modes
