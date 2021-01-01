@@ -200,16 +200,6 @@ call plug#begin('~/.config/nvim/plugged')
 		nnoremap <Leader>o :Files<cr>
 		nnoremap <Leader>b :Buffers<cr>
 
-  Plug 'mileszs/ack.vim', {}
-		if executable('rg')
-			let g:ackrpg = "rg --column --line-number --no-heading --follow --smart-case --color=always --ignore-file ~/.ignore"
-		elseif executable('ag')
-			let g:ackprg = "ag --nogroup --column --smart-case --follow --path-to-ignore ~/.ignore"
-		endif
-
-		" Shorthand for literal searches
-		command! -nargs=1 Find Ack -Q "<args>"
-
 	Plug 'scrooloose/nerdtree', {}
 		nnoremap <F2> :NERDTreeFocus<CR>
 		nnoremap <S-F2> :NERDTreeClose<CR>
