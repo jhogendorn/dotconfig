@@ -159,9 +159,6 @@ call plug#begin('~/.config/nvim/plugged')
 	"Causes excessive screen redrawing
 	"Plug 'wellle/context.vim', {}
 
-	" Tools {{{
-	Plug 'vimwiki/vimwiki', {}
-		let g:vimwiki_list = [{ 'path': '~/Wiki/', 'syntax': 'markdown', 'ext': '.md' }]
 	" }}}
 
 	" History and VCS {{{
