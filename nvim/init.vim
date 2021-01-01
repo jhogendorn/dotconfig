@@ -97,68 +97,33 @@ let g:ruby_path = system('rvm current')
 " =================
 call plug#begin('~/.config/nvim/plugged')
 
+
 	" Completion {{{
-	Plug 'ervandew/supertab'
-		let g:SuperTabClosePreviewOnPopupClose = 1 " Close the preview when completion ends
-		let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
+	
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+		" When in completion, enter selects
+		inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+		" When in completion, tab cycles
+		"inoremap <expr><TAB>	pumvisible() ? "\<C-n>" : "\<TAB>"
+		"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'wellle/tmux-complete.vim'
-		let g:deoplete#enable_at_startup = 1
-		set completeopt=longest,menuone,preview
-		set wildignore=*.o,*.obj,*~
-		set wildignore+=*vim/backups*
-		set wildignore+=*sass-cache*
-		set wildignore+=*DS_Store*
-		set wildignore+=*.gem
-		set wildignore+=tmp/**
+		"inoremap <silent><expr> <TAB>
+		"      \ pumvisible() ? coc#_select_confirm() :
+		"      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+		"      \ <SID>check_back_space() ? "\<TAB>" :
+		"      \ coc#refresh()
 
+		"function! s:check_back_space() abort
+		"  let col = col('.') - 1
+		"  return !col || getline('.')[col - 1]  =~# '\s'
+		"endfunction
 
-
-	Plug 'autozimu/LanguageClient-neovim', {
-				\ 'branch': 'next',
-				\ 'do': 'bash install.sh',
-				\ }
-		" Automatically start language servers.
-		let g:LanguageClient_autoStart = 1
-
-		" Minimal LSP configuration for JavaScript
-		let g:LanguageClient_serverCommands = {}
-		if executable('javascript-typescript-stdio')
-			let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-			" Use LanguageServer for omnifunc completion
-			autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-		endif
-
-		autocmd BufReadPost *.rs setlocal filetype=rust
-		if executable('rustup')
-			let g:LanguageClient_serverCommands.rust =['rustup', 'run', 'nightly', 'rls'] 
-			autocmd FileType rust setlocal omnifunc=LanguageClient#complete
-		endif
-
-		"" <leader>ld to go to definition
-		"autocmd FileType javascript nnoremap <buffer>
-		"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-		"" <leader>lh for type info under cursor
-		"autocmd FileType javascript nnoremap <buffer>
-		"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-		"" <leader>lr to rename variable under cursor
-		"autocmd FileType javascript nnoremap <buffer>
-		"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-		"" <leader>lf to fuzzy find symbols in the current document
-		"autocmd FileType javascript nnoremap <buffer>
-		"  \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
-		nnoremap <leader>Lh :call LanguageClient_textDocument_hover()
-		nnoremap <leader>Ld :call LanguageClient_textDocument_definition()
-		nnoremap <leader>Lr :call LanguageClient_textDocument_rename()
-		nnoremap <leader>Lf :call LanguageClient_textDocument_documentSymbol()
+		let g:coc_snippet_next = '<tab>'
 
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 		"autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 		let g:UltiSnipsExpandTrigger="<C-j>"
-		inoremap <expr><TAB>	pumvisible() ? "\<C-n>" : "\<TAB>"
-
 		" ALTERNATE ULTISNIPS
 		"" Don't map any tabs, I'll do it later
 		"let g:UltiSnipsExpandTrigger = '<NOP>'
@@ -407,15 +372,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
-" DEOPLETE OPTIONS
-" Cannot call this function before plug#end
-call deoplete#custom#option({
-\ 'smart_case': v:true,
-\ })
-call deoplete#custom#option('sources', {
-\ '_': ['buffer'],
-\ 'javascript.jsx': ['file', 'ultisnips', 'omni', 'buffer', 'tag'],
-\})
 
 "}}}
 
