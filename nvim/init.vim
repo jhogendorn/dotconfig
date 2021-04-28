@@ -4,7 +4,7 @@
 syntax on
 
 set shell=/usr/bin/env\ zsh         " :! commands use zsh
-"set termguicolors		    " truecolour support
+set termguicolors                   " truecolour support
 set number                          " set line numbers on
 set cursorline                      " highlight current line
 set numberwidth=6                   " Make sure the gutter is big enough for everything
