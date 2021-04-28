@@ -11,32 +11,29 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
-antigen bundle Tarrasch/zsh-autoenv
 
-#antigen theme denysdovhan/spaceship-prompt
+antigen bundle Tarrasch/zsh-autoenv
+	export AUTOENV_FILE_ENTER=.env
+	export AUTOENV_FILE_LEAVE=.env_leave
+
 antigen theme romkatv/powerlevel10k
 
 antigen apply
 
-export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-#export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-#source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+
+source /usr/local/opt/asdf/asdf.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin
 
-
-PATH=/Users/jhogendorn/Library/Python/3.7/bin:/usr/local/sbin:$PATH:./bin
-
-export AUTOENV_FILE_ENTER=.env
-export AUTOENV_FILE_LEAVE=.env_leave
+export LS_COLORS="$(vivid generate molokai)"
+export CLICOLOR=1
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 
 alias g='git'
@@ -82,3 +79,5 @@ alias gr='git rebase'
 alias grp='git checkout -p'
 
 alias gcdr='cd ./$(git rev-parse --show-cdup)'
+
+
