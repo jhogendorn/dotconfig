@@ -101,7 +101,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug '~/.config/nvim/notes'
 
 	" Completion {{{
-	
+
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		" When in completion, enter selects
 		inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -119,6 +119,57 @@ call plug#begin('~/.config/nvim/plugged')
 		"  let col = col('.') - 1
 		"  return !col || getline('.')[col - 1]  =~# '\s'
 		"endfunction
+		"
+		" Use tab for trigger completion with characters ahead and navigate.
+		" NOTE: Use command ‘:verbose imap <tab>’ to make sure tab is not mapped by
+		" other plugin before putting this into your config.
+		inoremap <silent><expr> <TAB>
+		 \ pumvisible() ? "\<C-n>" :
+		 \ <SID>check_back_space() ? "\<TAB>" :
+		 \ coc#refresh()
+		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+		function! s:check_back_space() abort
+			let col = col('.') - 1
+			return !col || getline('.')[col - 1] =~# '\s'
+		endfunction
+
+			
+		"function! CleverTab()
+		"    let l:line = strpart( getline('.'), 0, col('.')-1)
+		"    let l:lastchar = matchstr(getline('.'), '.\%' . col('.') . 'c')
+		"    " if popup menu is visible, go to next in the list
+		"    if pumvisible()
+		"        return "\<C-n>"
+		"    " if the just consists of spaces, indent
+		"    elseif l:line =~ '^\s*$'
+		"        return "\<Tab>"
+		"    " if the last character is a slash, call file-completion
+		"    elseif l:lastchar =~ "/"
+		"        return "\<C-x>\<C-f>"
+		"    " call omni completion if has omnifunc
+		"    elseif len(&omnifunc) > 0
+		"        return "\<C-x>\<C-o>"
+		"    " call word completion otherwise
+		"    else
+		"        return "\<C-n>"
+		"    endif
+		"endfunction
+
+		"inoremap <silent> <Tab> <C-R>=CleverTab()<CR>
+
+
+		" Use shift tab to go back
+		inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+		" Use <c-space> to trigger completion.
+		"inoremap <silent><expr> <c-space> coc#refresh()
+		" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+		" position. Coc only does snippet and additional edit on confirm.
+		" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+		if exists('*complete_info')
+		 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+		else
+		 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+		endif
 
 		let g:coc_snippet_next = '<tab>'
 
