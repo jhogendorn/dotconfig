@@ -1,4 +1,6 @@
-myref	myref.txt	/*myref*
-myref-maps	myref.txt	/*myref-maps*
-myref-plugins	myref.txt	/*myref-plugins*
-myref.txt	myref.txt	/*myref.txt*
+cs	cs.txt	/*cs*
+cs-common	cs.txt	/*cs-common*
+cs-contents	cs.txt	/*cs-contents*
+cs-maps	cs.txt	/*cs-maps*
+cs-plugins	cs.txt	/*cs-plugins*
+cs.txt	cs.txt	/*cs.txt*

@@ -1,0 +1,231 @@
+*cs*
+*cs.txt*   My own shorthand reference
+
+==============================================================================
+USAGE INSTRUCTIONS                                                        *cs*
+
+:h cs
+
+    Bring up my reference cheat sheet help pane
+    Reference of plugins and commands commonly used/forgotten
+
+==============================================================================
+CONTENTS                                                         *cs-contents*
+
+  1. Maps ......................... |cs-maps|
+  2. Common Commands .............. |cs-common|
+  3. Plugins ...................... |cs-plugins|
+     2. any-jump ..................... |cs-any-jump|
+     3. sneak ........................ |cs-sneak|
+     4. sandwich ..................... |cs-sandwich|
+     5. characterize ................. |cs-characterize|
+     6. gitgutter .................... |cs-gitgutter|
+     7. fugitive ..................... |cs-fugitive|
+     8. undotree ..................... |cs-undotree|
+     9. nerdcommenter ................ |cs-nerdcommenter|
+     10. argumentative ............... |cs-argumentative|
+     11. abolish ..................... |cs-abolish|
+     12. fzf ......................... |cs-fzf|
+     13. ultisnips ................... |cs-ultisnips|
+     14. nerdtree .................... |cs-nerdtree|
+     15. airline ..................... |cs-airline|
+     16. numbertoggle ................ |cs-numbertoggle|
+     17. tabular ..................... |cs-tabular|
+     18. repeat ...................... |cs-repeat|
+     19. CHADTree .................... |cs-chadtree|
+
+------------------------------------------------------------------------------
+1. Maps                                                               *cs-maps*
+
+  n <Leader>mt*                    Move tab
+  n <Leader>mw*                    Resize Window
+  n <Leader>mwm                    Max window
+  n <Leader>mwn                    Equalize windows
+
+  n Q                              @q quick replay
+  v  J|K                           Move visual block
+  n gp                             Reselect recently pasted text
+
+  n wt                             Whitespace Trim
+  n wts                            Whitespace Tabs to Spaces
+  n wst                            Whitespace Spaces to Tabs
+
+  Todo Management - Replace unordered lists with unicode
+  n <Leader>tdT                    ✓  Tick
+  n <Leader>tdb                    ☐  Box
+  n <Leader>tdt                    ☑  Ticked Box
+  n <Leader>tdh                    ◩  Half Coloured Box
+  n <Leader>tdd                    ◼  Full Coloured Box
+
+------------------------------------------------------------------------------
+1. Common Commands                                                  *cs-common*
+
+  y//e                             y to the end of the search match. Not
+                                     repeatable, as it changes the match
+
+
+------------------------------------------------------------------------------
+2. Plugins                                                         *cs-plugins*
+
+  - any-jump                                                      *cs-any-jump*
+      <Leader>f                    Bring up window
+      <Leader>fb                   Jump Back
+      <Leader>fl                   Jump Last Results
+  - sneak                                                            *cs-sneak*
+      s<char><char>                To quick navigate
+      S<char><char>                Search backwards
+      s<CR>                        Repeat last search
+      text objects:
+        z                          Object is z because of vim surround
+        3dzqt                      Delete up to third instance of 'qt'
+      original maps:
+        cl = s
+        cc = S
+  - sandwich                                                      *cs-sandwich*
+      sa   w/  iw(                 Surround in word ( foo becomes (foo)
+      sdb                          Automatically delete surrounds
+      sd(                          Delete surrounding (
+      srb"                         Replace automatically, (foo) becomes "foo"
+      sr("                         Replace explicit (, (foo) becomes "foo"
+      srff                         Rename function call from anywhere in use
+      text objects:
+                   <-----ib,is----->
+      {surrounding}{surrounded text}{surrounding}
+      <------------------ab,as------------------>
+  - characterize                                              *cs-characterize*
+      ga on a char shows its representation, this plug gives
+      unicode names, digraphs, emoji, html entities
+  - gitgutter                                                    *cs-gitgutter*
+      [c                          Next hunk
+      ]c                          Previous hunk
+      <Leader>hp                  Preview hunk
+      <Leader>hs                  Stage hunk
+      <Leader>hu                  Discard hunk
+      :GitGutterLineHighlightToggle
+      :GitGutterLineNrHighlightsToggle
+      :GitGutterSignsToggle
+      :GitGutterBufferToggle
+      :GitGutterToggle
+      :GitGutterFold              Fold all unchanged lines
+        zr                        Unfold 3 lines of context
+  - fugitive                                                      *cs-fugitive*
+      G is the shorthand and then any git command. No command is status
+      G blame
+  - undotree                                                      *cs-undotree*
+      <F3>
+  - nerdcommenter                                            *cs-nerdcommenter*
+      <Leader>c<Leader>            Toggle
+      <Leader>cl                  Comment Left
+  - argumentative                                            *cs-argumentative*
+      <,  Shift arg left
+      >,  Shift arg right
+      ],  Move to arg boundary
+      [,  Move to arg boundary
+      text objects:
+      a,                          Insert arg after
+      i,                          Insert arg
+  - abolish                                                        *cs-abolish*
+      Powerful search/replace
+      %Subvert/facilit{y,ies}/building{,s}/g
+      Coercion
+      crs                          coerce to snake_case
+      crm                          coerce to MixedCase
+      crc                          coerce to camelCase
+      cru                          coerce to UPPER_CASE
+      cr-                          coerce to dash-case
+      cr.                          coerce to dot.case
+      cr<space>                    coerce to space case
+      crt                          coerce to Title Case
+  - fzf                                                                *cs-fzf*
+      <Leader>o                    Open find file
+      <Leader>b                    Open find buffer
+  - Ultisnips                                                    *cs-ultisnips*
+    - vim-snippets
+  - nerdtree                                                      *cs-nerdtree*
+      <F2>
+  - airline                                                        *cs-airline*
+      :AirlineToggleWhitespace
+  - numbertoggle                                              *cs-numbertoggle*
+  - tabular                                                        *cs-tabular*
+      <Leader>a,                  :Tabularize /,<CR>
+      <Leader>a,                  :Tabularize /,<CR>
+      <Leader>a=                  :Tabularize /=<CR>
+      <Leader>a=                  :Tabularize /=<CR>
+      <Leader>a=>                  :Tabularize /=><CR>
+      <Leader>a=>                  :Tabularize /=><CR>
+  - repeat                                                          *cs-repeat*
+  - CHADTree                                                      *cs-chadtree*
+    Close CHADTree window, quit if it is the last window.
+      chadtree_settings.keymap.quit                                     ["q"]
+    Resize CHADTree window bigger.
+      chadtree_settings.keymap.bigger                              ["+", "="]
+    Resize CHADTree window smaller.
+      chadtree_settings.keymap.smaller                             ["-", "_"]
+    Refresh CHADTree.
+      chadtree_settings.keymap.refresh                              ["<c-r>"]
+    Change vim's working directory.
+      chadtree_settings.keymap.change_dir                               ["b"]
+    Set CHADTree's root to folder at cursor. Does not change 
+    working directory.
+      chadtree_settings.keymap.change_focus                             ["c"]
+    Set CHADTree's root one level up.
+      chadtree_settings.keymap.change_focus_up                          ["C"]
+    Open file at cursor.
+      chadtree_settings.keymap.primary                            ["<enter>"]
+    Open file at cursor, keep cursor in CHADTree's window.
+      chadtree_settings.keymap.secondary           ["<tab>", "<2-leftmouse>"]
+    Open file at cursor in a new tab.
+      chadtree_settings.keymap.tertiary        ["<m-enter>", "<middlemouse>"]
+    Open file at cursor in vertical split.
+      chadtree_settings.keymap.v_split                                  ["w"]
+    Open file at cursor in horizontal split.
+      chadtree_settings.keymap.h_split                                  ["W"]
+    Open file with GUI tools using `open` or `xdg open`. This 
+    will open third party tools such as `Finder` or `KDE Dolphin` 
+    or `GNOME nautilus`, etc. Depends on platform and user setup.
+      chadtree_settings.keymap.open_sys                                 ["o"]
+    Collapse all subdirectories for directory at cursor.
+      chadtree_settings.keymap.collapse                      ["<s-tab>", "`"]
+    Put cursor at the root of CHADTree
+      chadtree_settings.keymap.refocus                                  ["~"]
+    Position cursor in CHADTree at currently open buffer, if 
+    the buffer points to a location visible under CHADTree.
+      chadtree_settings.keymap.jump_to_current                          ["J"]
+    Print `ls --long` stat for file under cursor.
+      chadtree_settings.keymap.stat                                     ["K"]
+    Copy paths of files under cursor or visual block.
+      chadtree_settings.keymap.copy_name                                ["y"]
+    Copy names of files under cursor or visual block.
+      chadtree_settings.keymap.copy_basename                            ["Y"]
+    Set a glob pattern to narrow down visible files.
+      chadtree_settings.keymap.filter                                   ["f"]
+    Clear filter.
+      chadtree_settings.keymap.clear_filter                             ["F"]
+    Select files under cursor or visual block.
+      chadtree_settings.keymap.select                                   ["s"]
+    Clear selection.
+      chadtree_settings.keymap.clear_selection                          ["S"]
+    Create new file at location under cursor. Files ending 
+    with platform specifc path seperator will be folders.  
+    Intermediary folders are created automatically.  
+    ie. `uwu/owo/` under `unix` will create `uwu/` then `owo/` 
+    under it. Both are folders.
+      chadtree_settings.keymap.new                                      ["a"]
+    Rename file under cursor.
+      chadtree_settings.keymap.rename                                   ["r"]
+    Copy the selected files to location under cursor.
+      chadtree_settings.keymap.copy                                     ["p"]
+    Move the selected files to location under cursor.
+      chadtree_settings.keymap.cut                                      ["x"]
+    Delete the selected files. Items deleted cannot be recovered.
+      chadtree_settings.keymap.delete                                   ["d"]
+    Trash the selected files using platform `trash` command.
+      chadtree_settings.keymap.trash                                    ["t"]
+    Toggle `show_hidden` on and off. 
+      chadtree_settings.keymap.toggle_hidden                            ["."]
+    Toggle `follow` on and off.
+      chadtree_settings.keymap.toggle_follow                            []
+    Toggle version control integration on and off 
+      chadtree_settings.keymap.toggle_version_control                   []
+
+  vim:tw=78:ts=8:ft=help:norl:
