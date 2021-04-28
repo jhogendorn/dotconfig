@@ -79,3 +79,4 @@ alias grp='git checkout -p'
 alias gcdr='cd ./$(git rev-parse --show-cdup)'
 
 
+source "$(brew --prefix asdf)/asdf.sh"
