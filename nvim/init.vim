@@ -257,27 +257,30 @@ call plug#begin('~/.config/nvim/plugged')
 		nnoremap <Leader>o :Files<cr>
 		nnoremap <Leader>b :Buffers<cr>
 
-	Plug 'scrooloose/nerdtree', {}
-		nnoremap <F2> :NERDTreeToggle<CR>
-		nnoremap <S-F2> :NERDTreeFocus<CR>
-		nnoremap <Leader>sit :NERDTreeFind<CR>
+	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+	  nnoremap <F2> :CHADopen<cr>
 
-		let NERDTreeShowHidden=1
-		" Ignore vcs files, project files and resource forks.
-		let NERDTreeIgnore=[	'\.git$',
-					\ '\.svn$',
-					\ '\.project$',
-					\ '\.settings$',
-					\ '\.buildpath$',
-					\ '\._.+$',
-					\ '\.git_externals$',
-					\ '\.gitignore',
-					\ '\.gitkeep',
-					\'\.DS_Store' ]
+	"Plug 'scrooloose/nerdtree', {}
+	"  nnoremap <F2> :NERDTreeToggle<CR>
+	"  nnoremap <S-F2> :NERDTreeFocus<CR>
+	"  nnoremap <Leader>sit :NERDTreeFind<CR>
 
-		let NERDTreeMinimalUI=1
-		let NERDTreeShowBookmarks=1
-		let NERDTreeShowLineNumbers=1
+	"  let NERDTreeShowHidden=1
+	"  " Ignore vcs files, project files and resource forks.
+	"  let NERDTreeIgnore=[	'\.git$',
+	"        \ '\.svn$',
+	"        \ '\.project$',
+	"        \ '\.settings$',
+	"        \ '\.buildpath$',
+	"        \ '\._.+$',
+	"        \ '\.git_externals$',
+	"        \ '\.gitignore',
+	"        \ '\.gitkeep',
+	"        \'\.DS_Store' ]
+
+	"  let NERDTreeMinimalUI=1
+	"  let NERDTreeShowBookmarks=1
+	"  let NERDTreeShowLineNumbers=1
 
 	Plug 'tpope/vim-apathy', {}
 
