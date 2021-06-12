@@ -264,7 +264,31 @@ set -g mouse on
 # bind C-a send-prefix
 
 # move status line to top
-#set -g status-position top
+set -g status-position top
 #
 #
 set-option -sa terminal-overrides ',xterm-256color:RGB'
+
+# Splitting windows into panes
+# bind - horizontal split
+# bind | vertical split
+unbind _
+bind | split-window -h
+
+# Reorganising windows
+# bind [] to shift left/right
+bind [ swap-window -t -1
+bind ] swap-window -t +1
+
+# Make arrow keys for rearranging panes
+unbind <
+unbind >
+unbind Up
+unbind Down
+unbind Left
+unbind Right
+
+bind Up swap-pane -U
+bind Down swap-pane -D
+bind Left swap-pane -s '{left-of}'
+bind Right swap-pane -s '{right-of}'

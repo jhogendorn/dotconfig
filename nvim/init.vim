@@ -47,6 +47,7 @@ set wrapscan                        " Auto wrap searches
 set hlsearch                        " Highlight searches
 set shiftwidth=2                    " Cols for reindent, >> etc
 set tabstop=2                       " Cols for tabs
+set expandtab                       " Use spaces not tabs
 set list                            " show whitespace chars
 set listchars=tab:\│\ ,eol:↲        " Bars for tabs, show eol chars
 set listchars+=nbsp:␣               " Show nonbreaking spaces
@@ -74,12 +75,12 @@ set encoding=utf-8                  " utf-8 > * baaabeeee
 
 set nobackup                        " Disable backup files, this rarely saves me and typically gets in the way
 if has('persistent_undo')
-	set undofile
-	if has('nvim')
-			set undodir=~/.config/nvim/tmp/undo//
-	else
-			set undodir=~/.vim/tmp/undo//
-	endif
+  set undofile
+  if has('nvim')
+      set undodir=~/.config/nvim/tmp/undo//
+  else
+      set undodir=~/.vim/tmp/undo//
+  endif
 endif
 
 let mapleader="\<Space>"           " Space is the superior leader
@@ -98,252 +99,282 @@ let g:ruby_path = system('rvm current')
 " =================
 call plug#begin('~/.config/nvim/plugged')
 
-	Plug '~/.config/nvim/notes'
+  Plug '~/.config/nvim/notes'
 
-	" Completion {{{
+  " Completion {{{
 
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-		" When in completion, enter selects
-		inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-		" When in completion, tab cycles
-		"inoremap <expr><TAB>	pumvisible() ? "\<C-n>" : "\<TAB>"
-		"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " When in completion, enter selects
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " When in completion, tab cycles
+    "inoremap <expr><TAB>	pumvisible() ? "\<C-n>" : "\<TAB>"
+    "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-		"inoremap <silent><expr> <TAB>
-		"      \ pumvisible() ? coc#_select_confirm() :
-		"      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-		"      \ <SID>check_back_space() ? "\<TAB>" :
-		"      \ coc#refresh()
+    "inoremap <silent><expr> <TAB>
+    "      \ pumvisible() ? coc#_select_confirm() :
+    "      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    "      \ <SID>check_back_space() ? "\<TAB>" :
+    "      \ coc#refresh()
 
-		"function! s:check_back_space() abort
-		"  let col = col('.') - 1
-		"  return !col || getline('.')[col - 1]  =~# '\s'
-		"endfunction
-		"
-		" Use tab for trigger completion with characters ahead and navigate.
-		" NOTE: Use command ‘:verbose imap <tab>’ to make sure tab is not mapped by
-		" other plugin before putting this into your config.
-		inoremap <silent><expr> <TAB>
-		 \ pumvisible() ? "\<C-n>" :
-		 \ <SID>check_back_space() ? "\<TAB>" :
-		 \ coc#refresh()
-		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-		function! s:check_back_space() abort
-			let col = col('.') - 1
-			return !col || getline('.')[col - 1] =~# '\s'
-		endfunction
-
-			
-		"function! CleverTab()
-		"    let l:line = strpart( getline('.'), 0, col('.')-1)
-		"    let l:lastchar = matchstr(getline('.'), '.\%' . col('.') . 'c')
-		"    " if popup menu is visible, go to next in the list
-		"    if pumvisible()
-		"        return "\<C-n>"
-		"    " if the just consists of spaces, indent
-		"    elseif l:line =~ '^\s*$'
-		"        return "\<Tab>"
-		"    " if the last character is a slash, call file-completion
-		"    elseif l:lastchar =~ "/"
-		"        return "\<C-x>\<C-f>"
-		"    " call omni completion if has omnifunc
-		"    elseif len(&omnifunc) > 0
-		"        return "\<C-x>\<C-o>"
-		"    " call word completion otherwise
-		"    else
-		"        return "\<C-n>"
-		"    endif
-		"endfunction
-
-		"inoremap <silent> <Tab> <C-R>=CleverTab()<CR>
+    "function! s:check_back_space() abort
+    "  let col = col('.') - 1
+    "  return !col || getline('.')[col - 1]  =~# '\s'
+    "endfunction
+    "
+    " Use tab for trigger completion with characters ahead and navigate.
+    " NOTE: Use command ‘:verbose imap <tab>’ to make sure tab is not mapped by
+    " other plugin before putting this into your config.
+    inoremap <silent><expr> <TAB>
+     \ pumvisible() ? "\<C-n>" :
+     \ <SID>check_back_space() ? "\<TAB>" :
+     \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1] =~# '\s'
+    endfunction
 
 
-		" Use shift tab to go back
-		inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-		" Use <c-space> to trigger completion.
-		"inoremap <silent><expr> <c-space> coc#refresh()
-		" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-		" position. Coc only does snippet and additional edit on confirm.
-		" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-		if exists('*complete_info')
-		 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-		else
-		 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-		endif
+    "function! CleverTab()
+    "    let l:line = strpart( getline('.'), 0, col('.')-1)
+    "    let l:lastchar = matchstr(getline('.'), '.\%' . col('.') . 'c')
+    "    " if popup menu is visible, go to next in the list
+    "    if pumvisible()
+    "        return "\<C-n>"
+    "    " if the just consists of spaces, indent
+    "    elseif l:line =~ '^\s*$'
+    "        return "\<Tab>"
+    "    " if the last character is a slash, call file-completion
+    "    elseif l:lastchar =~ "/"
+    "        return "\<C-x>\<C-f>"
+    "    " call omni completion if has omnifunc
+    "    elseif len(&omnifunc) > 0
+    "        return "\<C-x>\<C-o>"
+    "    " call word completion otherwise
+    "    else
+    "        return "\<C-n>"
+    "    endif
+    "endfunction
 
-		let g:coc_snippet_next = '<tab>'
+    "inoremap <silent> <Tab> <C-R>=CleverTab()<CR>
 
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
-		"autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-		let g:UltiSnipsExpandTrigger="<C-j>"
 
-	Plug 'pechorin/any-jump.vim'
-		let g:any_jump_disable_default_keybindings = 1
-		" Normal mode: Jump to definition under cursore
-		nnoremap <leader>f :AnyJump<CR>
+    " Use shift tab to go back
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " Use <c-space> to trigger completion.
+    "inoremap <silent><expr> <c-space> coc#refresh()
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " position. Coc only does snippet and additional edit on confirm.
+    " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+    if exists('*complete_info')
+     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    else
+     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    endif
 
-		" Visual mode: jump to selected text in visual mode
-		xnoremap <leader>f :AnyJumpVisual<CR>
+    let g:coc_snippet_next = '<tab>'
 
-		" Normal mode: open previous opened file (after jump)
-		nnoremap <leader>fb :AnyJumpBack<CR>
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+    "autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+    let g:UltiSnipsExpandTrigger="<C-j>"
 
-		" Normal mode: open last closed search window again
-		nnoremap <leader>fl :AnyJumpLastResults<CR>
+  Plug 'pechorin/any-jump.vim'
+    let g:any_jump_disable_default_keybindings = 1
+    " Normal mode: Jump to definition under cursore
+    nnoremap <leader>f :AnyJump<CR>
 
-	" }}}
+    " Visual mode: jump to selected text in visual mode
+    xnoremap <leader>f :AnyJumpVisual<CR>
 
-	" Movement {{{
-	Plug 'jeffkreeftmeijer/vim-numbertoggle'
-	Plug 'justinmk/vim-sneak'
-		let g:sneak#label = 1
-	" }}}
+    " Normal mode: open previous opened file (after jump)
+    nnoremap <leader>fb :AnyJumpBack<CR>
 
-	" Behaviour {{{
-	Plug 'tpope/vim-repeat', {}
-	"Plug 'tpope/vim-surround', {}
-	Plug 'machakann/vim-sandwich', {}
-		augroup NERDTree-disable-sandwich
-			autocmd FileType nerdtree nnoremap <buffer><nowait> s :call nerdtree#ui_glue#invokeKeyMap('s')<CR>
-		augroup END
-	Plug 'tpope/vim-characterize', {}
+    " Normal mode: open last closed search window again
+    nnoremap <leader>fl :AnyJumpLastResults<CR>
 
-	"Causes excessive screen redrawing
-	"Plug 'wellle/context.vim', {}
+  " }}}
 
-	" }}}
+  " Movement {{{
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'justinmk/vim-sneak'
+    let g:sneak#label = 1
+    " 2-character Sneak (default)
+    nmap ss <Plug>Sneak_s
+    nmap SS <Plug>Sneak_S
+    " visual-mode
+    xmap ss <Plug>Sneak_s
+    xmap SS <Plug>Sneak_S
+    " operator-pending-mode
+    omap ss <Plug>Sneak_s
+    omap SS <Plug>Sneak_S
+  " }}}
 
-	" History and VCS {{{
-	Plug 'tpope/vim-fugitive'
-		autocmd QuickFixCmdPost *log* cwindow
-		autocmd QuickFixCmdPost *grep* cwindow
+  " Behaviour {{{
+  Plug 'tpope/vim-repeat', {}
+  "Plug 'tpope/vim-surround', {}
+  Plug 'machakann/vim-sandwich', {}
+    augroup NERDTree-disable-sandwich
+      autocmd FileType nerdtree nnoremap <buffer><nowait> s :call nerdtree#ui_glue#invokeKeyMap('s')<CR>
+    augroup END
+  Plug 'tpope/vim-characterize', {}
 
-	Plug 'airblade/vim-gitgutter'
-		set updatetime=100 " Vim update polling from 4s to 0.1s
+  "Causes excessive screen redrawing
+  "Plug 'wellle/context.vim', {}
 
-	Plug 'mbbill/undotree'
-		if !exists('g:undotree_WindowLayout')
-			let g:undotree_WindowLayout = 4
-			nnoremap <F3> :UndotreeToggle<CR>
-		endif
-	" }}}
+  " }}}
 
-	" Refactoring {{{
-	Plug 'scrooloose/nerdcommenter'
+  " History and VCS {{{
+  Plug 'tpope/vim-fugitive'
+    autocmd QuickFixCmdPost *log* cwindow
+    autocmd QuickFixCmdPost *grep* cwindow
 
-	Plug 'PeterRincker/vim-argumentative', {}
-	Plug 'tpope/vim-abolish', {}
+  Plug 'airblade/vim-gitgutter'
+    set updatetime=100 " Vim update polling from 4s to 0.1s
 
-	Plug 'godlygeek/tabular', {}
-		nmap <Leader>a,	 :Tabularize /,<CR>
-		vmap <Leader>a,	 :Tabularize /,<CR>
-		nmap <Leader>a=	 :Tabularize /=<CR>
-		vmap <Leader>a=	 :Tabularize /=<CR>
-		nmap <Leader>a=>	:Tabularize /=><CR>
-		vmap <Leader>a=>	:Tabularize /=><CR>
+  Plug 'mbbill/undotree'
+    if !exists('g:undotree_WindowLayout')
+      let g:undotree_WindowLayout = 4
+      nnoremap <F3> :UndotreeToggle<CR>
+    endif
+  " }}}
 
-	" }}}
+  " Refactoring {{{
+  Plug 'scrooloose/nerdcommenter'
 
-	" File Management {{{
+  Plug 'PeterRincker/vim-argumentative', {}
+  Plug 'tpope/vim-abolish', {}
 
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
-		if executable('rg')
-			let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-		elseif executable('ag')
-			let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-		endif
-		nnoremap <Leader>o :Files<cr>
-		nnoremap <Leader>b :Buffers<cr>
+  Plug 'godlygeek/tabular', {}
+    nmap <Leader>a,	 :Tabularize /,<CR>
+    vmap <Leader>a,	 :Tabularize /,<CR>
+    nmap <Leader>a=	 :Tabularize /=<CR>
+    vmap <Leader>a=	 :Tabularize /=<CR>
+    nmap <Leader>a=>	:Tabularize /=><CR>
+    vmap <Leader>a=>	:Tabularize /=><CR>
 
-	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-	  nnoremap <F2> :CHADopen<cr>
+  " }}}
 
-	"Plug 'scrooloose/nerdtree', {}
-	"  nnoremap <F2> :NERDTreeToggle<CR>
-	"  nnoremap <S-F2> :NERDTreeFocus<CR>
-	"  nnoremap <Leader>sit :NERDTreeFind<CR>
+  " File Management {{{
 
-	"  let NERDTreeShowHidden=1
-	"  " Ignore vcs files, project files and resource forks.
-	"  let NERDTreeIgnore=[	'\.git$',
-	"        \ '\.svn$',
-	"        \ '\.project$',
-	"        \ '\.settings$',
-	"        \ '\.buildpath$',
-	"        \ '\._.+$',
-	"        \ '\.git_externals$',
-	"        \ '\.gitignore',
-	"        \ '\.gitkeep',
-	"        \'\.DS_Store' ]
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+    if executable('rg')
+      let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow' 
+      " --glob "!.git/*"'
+    elseif executable('ag')
+      let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+    endif
+    nnoremap <Leader>o :Files<cr>
+    nnoremap <Leader>b :Buffers<cr>
 
-	"  let NERDTreeMinimalUI=1
-	"  let NERDTreeShowBookmarks=1
-	"  let NERDTreeShowLineNumbers=1
+  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+    nnoremap <F2> :CHADopen<cr>
+    let g:chadtree_settings = {
+        \ 'keymap.refresh':         ['R'],
+        \ 'keymap.primary':         ['o', '<enter>'],
+        \ 'keymap.open_sys':        ['O'],
+        \ 'keymap.tertiary':        ['t'],
+        \ 'keymap.v_split':         ['S', '|'],
+        \ 'keymap.h_split':         ['s', '-'],
+        \ 'keymap.collapse':        ['O', '<s-enter>'],
+        \ 'keymap.select':          ['x'],
+        \ 'keymap.clear_selection': ['X'],
+        \ 'keymap.delete':          ['D'],
+        \ 'keymap.trash':           ['d'],
+        \ 'ignore.name_exact':      ['__pycache__', '.pytest_cache', '.DS_Store', '.git', 'thumbs.db', '.directory']
+        \ }
 
-	Plug 'tpope/vim-apathy', {}
+  "Plug 'scrooloose/nerdtree', {}
+  "  nnoremap <F2> :NERDTreeToggle<CR>
+  "  nnoremap <S-F2> :NERDTreeFocus<CR>
+  "  nnoremap <Leader>sit :NERDTreeFind<CR>
 
-	" }}}
+  "  let NERDTreeShowHidden=1
+  "  " Ignore vcs files, project files and resource forks.
+  "  let NERDTreeIgnore=[	'\.git$',
+  "        \ '\.svn$',
+  "        \ '\.project$',
+  "        \ '\.settings$',
+  "        \ '\.buildpath$',
+  "        \ '\._.+$',
+  "        \ '\.git_externals$',
+  "        \ '\.gitignore',
+  "        \ '\.gitkeep',
+  "        \'\.DS_Store' ]
 
-	" Look & Feel {{{
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-		let g:airline#extensions#tabline#enabled = 1
-		let g:airline_powerline_fonts = 1
-		let g:airline_theme = 'powerlineish'
+  "  let NERDTreeMinimalUI=1
+  "  let NERDTreeShowBookmarks=1
+  "  let NERDTreeShowLineNumbers=1
 
-		if !exists('g:airline_symbols')
-			let g:airline_symbols = {}
-		endif
+  Plug 'tpope/vim-apathy', {}
 
-		let g:airline_left_sep = ''
-		let g:airline_left_alt_sep = ''
-		let g:airline_right_sep = ''
-		let g:airline_right_alt_sep = ''
-		let g:airline_symbols.branch = ''
-		let g:airline_symbols.readonly = ''
-		let g:airline_symbols.linenr = ''
+  " }}}
 
-		Plug 'rafi/awesome-vim-colorschemes'
-	" }}}
+  " Look & Feel {{{
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme = 'powerlineish'
 
-	" Language Specific {{{
-	Plug 'pangloss/vim-javascript'
-	Plug 'leafgarland/typescript-vim'
-	Plug 'peitalin/vim-jsx-typescript'
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
 
-	Plug 'plasticboy/vim-markdown', {}
-	"Plug 'tpope/vim-markdown', {}
-		au BufNewFile,BufReadPost *.md set filetype=markdown
-		au BufNewFile,BufReadPost README set filetype=markdown
-		let g:vim_markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.readonly = ''
+    let g:airline_symbols.linenr = ''
 
-	Plug 'stephpy/vim-yaml', {}
-	Plug 'chase/vim-ansible-yaml', {}
-	Plug 'elzr/vim-json', {}
-		au! BufRead,BufNewFile *.json set filetype=json
-		augroup json_autocmd
-			autocmd!
-			autocmd FileType json set autoindent
-			autocmd FileType json set formatoptions=tcq2l
-			autocmd FileType json set foldmethod=syntax
-		augroup END
+    Plug 'rafi/awesome-vim-colorschemes'
+  " }}}
 
-	Plug 'https://github.com/m-kat/aws-vim'
+  " Language Specific {{{
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
 
-	Plug 'hashivim/vim-terraform'
-	Plug 'juliosueiras/vim-terraform-completion'
+  Plug 'plasticboy/vim-markdown', {}
+  "Plug 'tpope/vim-markdown', {}
+    au BufNewFile,BufReadPost *.md set filetype=markdown
+    au BufNewFile,BufReadPost README set filetype=markdown
+    let g:vim_markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'shell=sh']
 
-	Plug 'Glench/Vim-Jinja2-Syntax'
-		augroup jinja2_ft
-			autocmd!
-			autocmd BufNewFile,BufRead,BufReadPost *.yml.j2    set ft=yaml.jinja syntax=yaml.jinja
-			autocmd BufNewFile,BufRead,BufReadPost *.yaml.j2   set ft=yaml.jinja syntax=yaml.jinja
-			autocmd BufNewFile,BufRead,BufReadPost *.json.j2   set ft=json.jinja syntax=yaml.jinja
-		augroup END
-	Plug 'wilriker/gcode.vim'
-	" }}}
+  Plug 'stephpy/vim-yaml', {}
+  Plug 'chase/vim-ansible-yaml', {}
+  Plug 'elzr/vim-json', {}
+    au! BufRead,BufNewFile *.json set filetype=json
+    augroup json_autocmd
+      autocmd!
+      autocmd FileType json set autoindent
+      autocmd FileType json set formatoptions=tcq2l
+      autocmd FileType json set foldmethod=syntax
+    augroup END
+
+  Plug 'cespare/vim-toml'
+
+  Plug 'https://github.com/m-kat/aws-vim'
+
+  Plug 'hashivim/vim-terraform'
+  Plug 'juliosueiras/vim-terraform-completion'
+
+  Plug 'Glench/Vim-Jinja2-Syntax'
+    augroup jinja2_ft
+      autocmd!
+      autocmd BufNewFile,BufRead,BufReadPost *.yml.j2    set ft=yaml.jinja syntax=yaml.jinja
+      autocmd BufNewFile,BufRead,BufReadPost *.yaml.j2   set ft=yaml.jinja syntax=yaml.jinja
+      autocmd BufNewFile,BufRead,BufReadPost *.json.j2   set ft=json.jinja syntax=yaml.jinja
+    augroup END
+  Plug 'wilriker/gcode.vim'
+
+  Plug 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
+
+  autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+  " }}}
 
 call plug#end()
 
@@ -354,27 +385,29 @@ call plug#end()
 " =================
 
 " Closes the current buffer
-	nnoremap <Leader>q <C-W>q
+  nnoremap <Leader>q <C-W>q
 
-	nnoremap <Leader>k <C-W>k
-	nnoremap <Leader>j <C-W>j
-	nnoremap <Leader>h <C-W>h
-	nnoremap <Leader>l <C-W>l
+  nnoremap <Leader>k <C-W>k
+  nnoremap <Leader>j <C-W>j
+  nnoremap <Leader>h <C-W>h
+  nnoremap <Leader>l <C-W>l
 
 " Manage Tabs
-	nnoremap <Leader>mtl :tabp<CR>
-	nnoremap <Leader>mth :tabn<CR>
-	nnoremap <Leader>it :tabnew<CR>
+  nnoremap <Leader>mtl :tabp<CR>
+  nnoremap <Leader>mth :tabn<CR>
+  nnoremap <Leader>it :tabnew<CR>
+  nnoremap <Leader>L :gt<CR>
+  nnoremap <Leader>H :gT<CR>
 " Change Sizes
 "	 Vertical Size
-	nnoremap <Leader>mwk <C-W>+
-	nnoremap <Leader>mwj <C-W>-
+  nnoremap <Leader>mwk <C-W>+
+  nnoremap <Leader>mwj <C-W>-
 "	Horizontal Size
-	nnoremap <Leader>mwh <C-W><
-	nnoremap <Leader>mwl <C-W>>
+  nnoremap <Leader>mwh <C-W><
+  nnoremap <Leader>mwl <C-W>>
 "	Zoom Toggle
-	nnoremap <Leader>mwn <C-W>=
-	nnoremap <Leader>mwm <C-W>_<C-W><Bar>
+  nnoremap <Leader>mwn <C-W>=
+  nnoremap <Leader>mwm <C-W>_<C-W><Bar>
 "}}}
 
 " WINDOW CREATION {{{
@@ -382,25 +415,25 @@ call plug#end()
 "
 " Vertical total span
 "	 Left
-	nnoremap <Leader>iwH	 :topleft	vnew<CR>
+  nnoremap <Leader>iwH	 :topleft	vnew<CR>
 "	Right
-	nnoremap <Leader>iwL	 :botright	vnew<CR>
+  nnoremap <Leader>iwL	 :botright	vnew<CR>
 " Horizontal total span
 "	 Left
-	nnoremap <Leader>iwK	 :topleft	new<CR>
+  nnoremap <Leader>iwK	 :topleft	new<CR>
 "	Right
-	nnoremap <Leader>iwJ	 :botright new<CR>
+  nnoremap <Leader>iwJ	 :botright new<CR>
 "
 " Horizontal Split
 "	 Left
-	nnoremap <Leader>iwh :leftabove	vnew<CR>
+  nnoremap <Leader>iwh :leftabove	vnew<CR>
 "	Right
-	nnoremap <Leader>iwl :rightbelow vnew<CR>
+  nnoremap <Leader>iwl :rightbelow vnew<CR>
 " Horizontal Split
 "	 Left
-	nnoremap <Leader>iwk :leftabove	new<CR>
+  nnoremap <Leader>iwk :leftabove	new<CR>
 "	Right
-	nnoremap <Leader>iwj :rightbelow new<CR>
+  nnoremap <Leader>iwj :rightbelow new<CR>
 "}}}
 
 " MAPPINGS {{{
@@ -477,6 +510,10 @@ nnoremap <Leader>tdb r<C-V>u2610<Esc> 		" Ballot box
 nnoremap <Leader>tdt r<C-V>u2611<Esc> 		" Ballot box ticked
 nnoremap <Leader>tdh r<C-V>u25E9<Esc> 		" Ballot half coloured
 nnoremap <Leader>tdd r<C-V>u25FC<Esc> 		" Ballot full coloured
+
+" Quick edit and reload config
+nnoremap <leader>ev <cmd>vsp $MYVIMRC<cr>
+nnoremap <leader>sv <cmd>source $MYVIMRC<cr>
 
 "}}}
 

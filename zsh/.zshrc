@@ -27,6 +27,8 @@ antigen apply
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(asdf exec direnv hook zsh)"
+
 PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin
 
 export LS_COLORS="$(vivid generate molokai)"
@@ -78,5 +80,7 @@ alias grp='git checkout -p'
 
 alias gcdr='cd ./$(git rev-parse --show-cdup)'
 
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 
 source "$(brew --prefix asdf)/asdf.sh"
