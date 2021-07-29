@@ -463,9 +463,9 @@ xnoremap c "xc
 
 " After block yank and paste, move cursor to the end of operated text and don't override register
 " search for yanked text :%s/<CTRL-R>"/"/g
-vnoremap y y`]
-vnoremap p "_dP`]
-nnoremap p p`]
+"vnoremap y y`]
+"vnoremap p "_dP`]
+"nnoremap p p`]
 
 " Don't cancel visual select when shifting
 xnoremap <	<gv
