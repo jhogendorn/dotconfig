@@ -331,6 +331,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:airline_symbols.linenr = ''
 
     Plug 'rafi/awesome-vim-colorschemes'
+    Plug 'christoomey/vim-tmux-navigator'
   " }}}
 
   " Language Specific {{{
