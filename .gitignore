@@ -11,3 +11,4 @@ lnav
 nvim/notes/doc/tags
 .DS_Store
 iterm2/AppSupport
+tmux/plugins
