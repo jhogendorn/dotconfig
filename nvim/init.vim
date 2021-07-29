@@ -3,7 +3,8 @@
 
 syntax on
 
-set shell=/usr/bin/env\ zsh         " :! commands use zsh
+"set shell="/usr/bin/env\ zsh"       " :! commands use zsh
+set shell=zsh
 set termguicolors                   " truecolour support
 set number                          " set line numbers on
 set cursorline                      " highlight current line
