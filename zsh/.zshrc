@@ -23,7 +23,6 @@ antigen theme romkatv/powerlevel10k
 
 antigen apply
 
-#export WORKON_HOME=$HOME/.virtualenvs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(asdf exec direnv hook zsh)"
@@ -82,4 +81,7 @@ alias gcdr='cd ./$(git rev-parse --show-cdup)'
 alias ibrew='arch -x86_64 /usr/local/bin/brew'
 alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 
+alias activate='. ./.venv/bin/activate'
+
 source "$(brew --prefix asdf)/asdf.sh"
+
