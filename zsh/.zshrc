@@ -28,6 +28,9 @@ export npm_config_cache=$XDG_CACHE_HOME/npm
 #
 # Ensures python puts its history in the right place
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/startup.py"
+
+##### POWERLEVEL 10K #####
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -36,33 +39,85 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+[[ -f $XDG_CONFIG_HOME/zsh/.p10k.zsh ]] && source $XDG_CONFIG_HOME/zsh/.p10k.zsh
 
-source "$(brew --prefix antigen)/share/antigen/antigen.zsh"
+##### ZNAP ######
 
-antigen use oh-my-zsh
+zstyle ':znap:*' repos-dir ~/.cache/znap
+source ~/.config/znap/znap.zsh
 
-antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
+znap prompt romkatv/powerlevel10k
 
-antigen bundle Tarrasch/zsh-autoenv
-	export AUTOENV_FILE_ENTER=.env
-	export AUTOENV_FILE_LEAVE=.env_leave
+# Completion
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-autosuggestions # wont work with syntax-highlighting until zsh 5.9
+#znap source marlonrichert/zsh-autocomplete
+znap source Aloxaf/fzf-tab
+  # show fzf in a tmux popup
+  zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+  # disable sort when completing `git checkout`
+  zstyle ':completion:*:git-checkout:*' sort false
+  # set descriptions format to enable group support
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # preview directory's content with exa when completing cd
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+  # switch group using `,` and `.`
+  zstyle ':fzf-tab:*' switch-group ',' '.'
+znap source MichaelAquilina/zsh-you-should-use
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+setopt globdots
 
-antigen theme romkatv/powerlevel10k
 
-antigen apply
+# History
+znap source zsh-users/zsh-history-substring-search
+  bindkey -M viins '^[[A' history-substring-search-up
+  bindkey -M viins '^[[B' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Behaviour
+## VIM MODE
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_SURROUND_BINDKEY="s-prefix"
+}
+function zvm_after_init() {
+  [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/fzf.zsh" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/fzf/fzf.zsh"
+  enable-fzf-tab
+}
+znap source jeffreytse/zsh-vi-mode
+bindkey -v
+export KEYTIMEOUT=1
+znap source Tarrasch/zsh-autoenv
+  export AUTOENV_FILE_ENTER=.in
+  export AUTOENV_FILE_LEAVE=.out
 
-eval "$(asdf exec direnv hook zsh)"
+# AppSupport
+#znap source alexdesousa/oauth
+#znap source Sordie/AWSume
+
+# Colors
+znap source zpm-zsh/colorize # auto colorize a bunch of commands
+[[ ! -f $XDG_CACHE_HOME/lscolor ]] && vivid generate molokai > $XDG_CACHE_HOME/lscolor # because vivid output is non deterministic
+export LS_COLORS="$(cat ${XDG_CACHE_HOME}/lscolor)"
+export LSCOLORS="gxbxabagFxghbhfhfhxxxx" # Approximation of molokai
+export CLICOLOR=1
+#znap source marlonrichert/zcolors
+#znap eval zcolors "zcolors ${(q)LS_COLORS}"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+znap source zsh-users/zsh-syntax-highlighting
+
+#znap does this automatically?
+#autoload -Uz compinit zrecompile
+#compinit -d $XDG_CACHE_HOME/zsh/zcompdump
+
 
 PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin
 
-export LS_COLORS="$(vivid generate molokai)"
-export CLICOLOR=1
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
+alias ls="gls --color -F"
+alias ll="exa -lg -a --git --octal-permissions --no-permissions --color=always"
 
 alias g='git'
 
@@ -114,4 +169,3 @@ alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 alias activate='. ./.venv/bin/activate'
 
 source "$(brew --prefix asdf)/asdf.sh"
-
