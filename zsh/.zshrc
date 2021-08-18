@@ -1,3 +1,33 @@
+##### XDG Support #####
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+# I think these dont work
+#ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
+#ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
+
+export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+export LPASS_HOME=$XDG_CONFIG_HOME/lpass
+
+export HISTFILE=$XDG_CACHE_HOME/.zsh_history
+
+export ASDF_DATA_DIR="${XDG_DATA_HOME:-~/.local/share}/asdf"
+export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME:-~./config}/asdf/asdfrc"
+
+export npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
+export npm_config_cache=$XDG_CACHE_HOME/npm
+# if you do this one, make sure to add $XDG_DATA_HOME/npm/bin to the $PATH,
+# otherwise global installed executables won't be accessible on the cli.
+#export npm_config_prefix=$XDG_DATA_HOME/npm
+#export PATH=$PATH:$XDG_DATA_HOME/npm/bin
+#
+# Ensures python puts its history in the right place
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/startup.py"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.

@@ -18,5 +18,6 @@
 			"filetypes": ["dockerfile"],
 			"args": ["--stdio"]
 		}
-	}
+	},
+  "session.directory": "~/.cache/nvim/sessions"
 }

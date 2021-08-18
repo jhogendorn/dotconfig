@@ -75,13 +75,16 @@ set nospell                         " Disable checking by default (use <F4> to t
 set encoding=utf-8                  " utf-8 > * baaabeeee
 
 set nobackup                        " Disable backup files, this rarely saves me and typically gets in the way
+
 if has('persistent_undo')
   set undofile
-  if has('nvim')
-      set undodir=~/.config/nvim/tmp/undo//
-  else
-      set undodir=~/.vim/tmp/undo//
-  endif
+endif
+if has('nvim')
+  set undodir=.cache/nvim/undo
+  set viminfo+=n~/.cache/nvim/info
+else
+  set undodir=.cache/vim/undo
+  set viminfo+=n~/.cache/vim/info
 endif
 
 let mapleader="\<Space>"           " Space is the superior leader
