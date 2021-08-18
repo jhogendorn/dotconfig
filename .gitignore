@@ -12,7 +12,6 @@ nvim/notes/doc/tags
 .DS_Store
 iterm2/AppSupport
 tmux/plugins
-zsh/.zsh_history
 asdf
 docker
 fzf
