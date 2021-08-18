@@ -13,3 +13,7 @@ nvim/notes/doc/tags
 iterm2/AppSupport
 tmux/plugins
 zsh/.zsh_history
+asdf
+docker
+fzf
+gnupg
