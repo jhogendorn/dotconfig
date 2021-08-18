@@ -4,3 +4,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "znap"]
+	path = znap
+	url = git@github.com:marlonrichert/zsh-snap.git
