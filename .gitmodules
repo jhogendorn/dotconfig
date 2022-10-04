@@ -4,3 +4,6 @@
 [submodule "znap"]
 	path = znap
 	url = git@github.com:marlonrichert/zsh-snap.git
+[submodule "shlib"]
+	path = shlib
+	url = git@github.com:jhogendorn/shellsnips.git
