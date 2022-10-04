@@ -21,6 +21,7 @@ znap source zsh-users/zsh-autosuggestions # wont work with syntax-highlighting u
 znap source Aloxaf/fzf-tab
   # show fzf in a tmux popup
   zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+  zstyle ':fzf-tab:*' popup-pad 30 0
   # disable sort when completing `git checkout`
   zstyle ':completion:*:git-checkout:*' sort false
   # set descriptions format to enable group support
