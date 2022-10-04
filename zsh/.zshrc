@@ -140,3 +140,27 @@ alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 alias activate='. ./.venv/bin/activate'
 
 source "$(brew --prefix asdf)/asdf.sh"
+
+# General Tools {{{
+# https://furbo.org/2021/08/25/jsc-my-new-best-friend/
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc'
+# }}}
+
+# Watch MacOS do silly things {{{
+alias watchswap="sudo fs_usage -w | grep swapfile"
+alias sleepless="pmset -g assertions | egrep '(PreventUserIdleSystemSleep|PreventUserIdleDisplaySleep)'"
+#}}}
+
+# Docker and Containers {{{
+alias ddu='colima start --mount-type=9p' # Docker Daemon Up
+alias ddd='colima stop' # Docker Daemon Down
+alias dc='docker-compose'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
+alias dcr='docker-compose run -it /bin/bash'
+alias dce='docker-compose exec -it /bin/bash'
+alias dcc='dc'
+alias d='docker'
+alias dr='docker run -it /bin/bash'
+alias de='docker exec -it /bin/bash'
+# }}}
