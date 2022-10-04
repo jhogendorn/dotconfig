@@ -63,6 +63,8 @@ znap source Tarrasch/zsh-autoenv
   export AUTOENV_FILE_ENTER=.in
   export AUTOENV_FILE_LEAVE=.out
 
+bindkey '^q' push-line-or-edit
+
 # AppSupport
 #znap source alexdesousa/oauth
 #znap source Sordie/AWSume
