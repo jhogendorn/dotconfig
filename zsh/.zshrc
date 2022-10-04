@@ -137,6 +137,7 @@ alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 alias activate='. ./.venv/bin/activate'
 
 source "$(brew --prefix asdf)/asdf.sh"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 # General Tools {{{
 # https://furbo.org/2021/08/25/jsc-my-new-best-friend/
