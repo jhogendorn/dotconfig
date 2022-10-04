@@ -33,6 +33,7 @@ znap source MichaelAquilina/zsh-you-should-use
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt globdots
 
+znap source ohmyzsh/ohmyzsh plugins/asdf
 
 # History
 znap source zsh-users/zsh-history-substring-search
@@ -136,7 +137,6 @@ alias mbrew='arch -arm64 /opt/homebrew/bin/brew'
 
 alias activate='. ./.venv/bin/activate'
 
-source "$(brew --prefix asdf)/asdf.sh"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 # General Tools {{{
