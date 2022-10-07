@@ -1,0 +1,61 @@
+[user]
+	name = Joshua Hogendorn
+	email = jhogendorn@gmail.com
+[include]
+  path = local
+[pull]
+	rebase = true
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[core]
+	pager = less -F -X
+[init]
+	defaultBranch = main
+[color "decorate"]
+	HEAD = normal
+	remotebranch = normal
+	grafted = normal
+	tag = normal
+	stash = normal
+	branch = normal
+[color "diff"]
+	whitespace = normal
+	commit = normal
+	func = normal bold
+[color "grep"]
+	filename = normal
+	function = normal bold
+	column = normal
+	linenumber = normal
+[color "interactive"]
+	header = normal
+	help = normal
+	error = normal
+[color "status"]
+	changed = 11 normal
+	unmerged = 9 normal
+	nobranch = normal
+	updated = 10 normal
+	localbranch = normal
+	added = 10 normal
+	untracked = normal dim
+	header = normal
+	remotebranch = normal
+	branch = normal
+[color "branch"]
+	remote = normal
+	upstream = normal
+	plain = normal
+	current = normal
+	local = normal
+[color "remote"]
+	success = 2 normal
+	error = 1 normal
+	hint = normal dim
+	warning = 3 normal
+[commit]
+	gpgsign = true
+[alias]
+	fix-perm = "!f(){ git diff -p | grep -E '^(diff|old mode|new mode)' | sed -e 's/^old/NEW/;s/^new/old/;s/^NEW/new/' | git apply; }; f"
