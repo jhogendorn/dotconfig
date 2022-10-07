@@ -19,3 +19,4 @@ gnupg
 *.zwc
 RevoStudio
 wireshark
+bpytop/error.log
