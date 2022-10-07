@@ -399,7 +399,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'cespare/vim-toml'
 
-  Plug 'https://github.com/m-kat/aws-vim'
+  "Plug 'https://github.com/m-kat/aws-vim'
 
   Plug 'hashivim/vim-terraform'
   Plug 'juliosueiras/vim-terraform-completion'
