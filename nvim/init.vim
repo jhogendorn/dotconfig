@@ -231,6 +231,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Normal mode: open last closed search window again
     nnoremap <leader>fl :AnyJumpLastResults<CR>
 
+    Plug 'wellle/tmux-complete.vim'
   " }}}
 
   " Movement {{{
