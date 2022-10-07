@@ -379,6 +379,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
 
+  "Plug 'dkarter/bullets.vim'
   Plug 'plasticboy/vim-markdown', {}
   "Plug 'tpope/vim-markdown', {}
     au BufNewFile,BufReadPost *.md set filetype=markdown
