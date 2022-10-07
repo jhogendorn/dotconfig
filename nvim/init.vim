@@ -112,12 +112,13 @@ if has('persistent_undo')
   set undofile
 endif
 if has('nvim')
-  set undodir=.cache/nvim/undo
+  set undodir=~/.cache/nvim/undo
   set viminfo+=n~/.cache/nvim/info
 else
-  set undodir=.cache/vim/undo
+  set undodir=~/.cache/vim/undo
   set viminfo+=n~/.cache/vim/info
 endif
+
 
 let mapleader="\<Space>"           " Space is the superior leader
 
@@ -319,7 +320,8 @@ call plug#begin('~/.config/nvim/plugged')
         \ 'keymap.clear_selection': ['X'],
         \ 'keymap.delete':          ['D'],
         \ 'keymap.trash':           ['d'],
-        \ 'ignore.name_exact':      ['__pycache__', '.pytest_cache', '.DS_Store', '.git', 'thumbs.db', '.directory']
+        \ 'ignore.name_exact':      ['__pycache__', '.pytest_cache', '.DS_Store', '.git', 'thumbs.db', '.directory'],
+        \ 'xdg':                    v:true
         \ }
 
   "Plug 'scrooloose/nerdtree', {}
