@@ -6,4 +6,4 @@
 	url = git@github.com:marlonrichert/zsh-snap.git
 [submodule "shlib"]
 	path = shlib
-	url = git@github.com:jhogendorn/shellsnips.git
+	url = git@github.com:jhogendorn/shlib.git
