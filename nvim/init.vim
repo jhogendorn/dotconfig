@@ -296,11 +296,10 @@ call plug#begin('~/.config/nvim/plugged')
 
   " File Management {{{
 
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
     if executable('rg')
-      let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow' 
-      " --glob "!.git/*"'
+      let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/**"'
     elseif executable('ag')
       let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
     endif
