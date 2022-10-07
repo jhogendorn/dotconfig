@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+
+:(){ . shlib "$@"; };:
+use pprint
+
+cd $PATH_BASE
+
+info "Install Ruby"
+! asdf plugin add ruby
+asdf install ruby
+
+# Theres no modern version of gemsets, or way to have a fenced ruby just for neovim,
+# short of pushing into a docker container or something crazy
+info "Install bundler for ruby"
+gem install bundler
+# path is a config line now, so its global, no point.
+# bundle install --path $RUBY_NVIM_ENV_PATH
+info "Install Neovim Ruby Packages"
+bundle install
+
+info "Ruby Installed and Configured for Neovim"

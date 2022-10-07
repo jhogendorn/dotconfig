@@ -1,3 +1,35 @@
+" PROVIDERS {{{
+" =========
+
+  " https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+  let configdir = $HOME . '/.config/nvim'
+
+  let g:python3_host_prog = configdir . '/providers/bin/python3'
+  "let g:python_host_prog = configdir . '/providers/bin/python'
+  "if exists('g:loaded_python3_provider')
+  "  unlet g:loaded_python3_provider
+  "  runtime autoload/provider/python3.vim
+  "endif
+
+  let g:perl_host_prog = configdir . '/providers/bin/perl'
+  "if exists('g:loaded_perl_provider')
+  "  unlet g:loaded_perl_provider
+  "  runtime autoload/provider/perl.vim
+  "endif
+
+  let g:node_host_prog = configdir . '/providers/nodejs/bin/neovim-node-host'
+  "if exists('g:loaded_node_provider')
+  "  unlet g:loaded_node_provider
+  "  runtime autoload/provider/node.vim
+  "endif
+
+  let g:ruby_host_prog = configdir . '/providers/ruby/bin/neovim-ruby-host'
+  "if exists('g:loaded_ruby_provider')
+  "  unlet g:loaded_ruby_provider
+  "  runtime autoload/provider/ruby.vim
+  "endif
+" }}}
+
 " GENERAL {{{
 " =================
 
@@ -95,9 +127,10 @@ autocmd BufRead,BufNewFile * setlocal signcolumn=yes	" Ensure the symbol column 
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
 
 "Use the system ruby, not whatever rvm is set to
-let g:ruby_path = system('rvm current')
+"let g:ruby_path = system('rvm current')
 
 "}}}
+"
 
 " PLUGINS {{{
 " =================

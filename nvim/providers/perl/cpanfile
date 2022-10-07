@@ -1,0 +1,2 @@
+requires "Neovim::Ext";
+requires "App::cpanminus";

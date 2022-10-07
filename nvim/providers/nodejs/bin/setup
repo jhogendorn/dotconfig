@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+
+:(){ . shlib "$@"; };:
+use pprint
+
+cd $PATH_BASE
+
+info "Install NodeJS"
+! asdf plugin add nodejs
+asdf install nodejs
+
+info "Install Neovim NodeJS Packages"
+cd $PATH_BASE
+npm install
+
+info "Ensure host symlinks"
+[[ -L $PATH_SCRIPT/neovim-node-host ]] || 
+  ln -s $PATH_BASE/node_modules/.bin/neovim-node-host $PATH_SCRIPT/neovim-node-host
+
+info "NodeJS Installed and Configured for Neovim"

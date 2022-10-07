@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+
+:(){ . shlib "$@"; };:
+use pprint
+
+cd $PATH_BASE
+
+info "Install Python"
+! asdf plugin add python
+asdf install python
+
+info "Setup Neovim Python Venv"
+python -m pip install --upgrade pip
+python -m venv $PATH_BASE/venv
+
+info "Install Neovim Python Packages"
+source $PATH_BASE/venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+info "Python installed and Configured for Neovim"

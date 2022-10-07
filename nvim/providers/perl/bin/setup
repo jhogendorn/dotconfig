@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+
+:(){ . shlib "$@"; };:
+use pprint
+
+cd $PATH_BASE
+
+info "Install Perl"
+! asdf plugin add perl
+asdf install perl
+
+info "Install Carton (bundler for perl)"
+cpanm Carton
+
+info "Install Neovim Perl Packages"
+asdf exec carton install
+
+info "Perl Installed and Configured for Neovim"
