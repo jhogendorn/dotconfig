@@ -422,7 +422,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
 
   autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-  " }}}
+
+"}}}
+
 
 call plug#end()
 
