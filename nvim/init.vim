@@ -139,6 +139,13 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug '~/.config/nvim/notes'
 
+
+  " To Investigate {{{
+  "Plug 'lukas-reineke/indent-blankline.nvim' " https://github.com/lukas-reineke/indent-blankline.nvim
+  "Plug 'ggandor/lightspeed.nvim' " https://github.com/ggandor/lightspeed.nvim
+  "Plug 'preservim/vim-pencil' " https://github.com/preservim/vim-pencil
+  " }}}
+
   " Completion {{{
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
