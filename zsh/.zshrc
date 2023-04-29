@@ -94,6 +94,10 @@ znap source zsh-users/zsh-syntax-highlighting
 #autoload -Uz compinit zrecompile
 #compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 
+export GPG_TTY=$(tty)
+if [[ -n "$SSH_CONNECTION" ]] ;then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
 
 PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin:$HOME/.local/bin
 
