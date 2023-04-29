@@ -48,6 +48,11 @@ export PERL_CPANM_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/cpanm"
 export AWS_VAULT_PROMPT=ykman
 export AWS_SESSION_TOKEN_TTL=8h
 
+# Configure TMUX / OH-MY-TMUX
+
+export TMUX_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+export TMUX_CONF_LOCAL="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf.local"
+
 ##### POWERLEVEL 10K #####
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

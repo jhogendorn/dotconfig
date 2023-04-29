@@ -95,7 +95,7 @@ znap source zsh-users/zsh-syntax-highlighting
 #compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 
 
-PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin
+PATH=$HOME/.config/bin:/usr/local/sbin:$PATH:./bin:$HOME/.local/bin
 
 alias ls="gls --color -F"
 alias ll="exa -lg -a --git --octal-permissions --no-permissions --color=always"
